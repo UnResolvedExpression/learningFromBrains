@@ -1,0 +1,21 @@
+{
+  "train": [
+    "data/upstream/ds000003\\ds-ds000003_sub-02_task-rhymejudgment.tar",
+    "data/upstream/ds000003\\ds-ds000003_sub-06_task-rhymejudgment.tar",
+    "data/upstream/ds000003\\ds-ds000003_sub-07_task-rhymejudgment.tar",
+    "data/upstream/ds000003\\ds-ds000003_sub-08_task-rhymejudgment.tar",
+    "data/upstream/ds000003\\ds-ds000003_sub-10_task-rhymejudgment.tar",
+    "data/upstream/ds000003\\ds-ds000003_sub-13_task-rhymejudgment.tar"
+  ],
+  "validation": [
+    "data/upstream/ds000003\\ds-ds000003_sub-01_task-rhymejudgment.tar",
+    "data/upstream/ds000003\\ds-ds000003_sub-11_task-rhymejudgment.tar"
+  ],
+  "test": [
+    "data/upstream/ds000003\\ds-ds000003_sub-03_task-rhymejudgment.tar",
+    "data/upstream/ds000003\\ds-ds000003_sub-04_task-rhymejudgment.tar",
+    "data/upstream/ds000003\\ds-ds000003_sub-05_task-rhymejudgment.tar",
+    "data/upstream/ds000003\\ds-ds000003_sub-09_task-rhymejudgment.tar",
+    "data/upstream/ds000003\\ds-ds000003_sub-12_task-rhymejudgment.tar"
+  ]
+}

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a78d4b61-91a8-4683-b2f2-62c115021ee0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/learning-from-brains/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/learning-from-brains/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/learning-from-brains/cnnFeature/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/learning-from-brains/cnnFeature/dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/learning-from-brains/cnnFeature/firstCnnModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/learning-from-brains/cnnFeature/firstCnnModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/learning-from-brains/cnnFeature/secondCnnModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/learning-from-brains/cnnFeature/secondCnnModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/learning-from-brains/cnnFeature/ssrl.py" beforeDir="false" afterPath="$PROJECT_DIR$/learning-from-brains/cnnFeature/ssrl.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/learning-from-brains/scripts/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/learning-from-brains/scripts/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/learning-from-brains/src/decoder/autoencoder.py" beforeDir="false" afterPath="$PROJECT_DIR$/learning-from-brains/src/decoder/autoencoder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/learning-from-brains/src/decoder/linear_baseline.py" beforeDir="false" afterPath="$PROJECT_DIR$/learning-from-brains/src/decoder/linear_baseline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/learning-from-brains/src/embedder/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/learning-from-brains/src/embedder/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/learning-from-brains/src/embedder/csm.py" beforeDir="false" afterPath="$PROJECT_DIR$/learning-from-brains/src/embedder/csm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/learning-from-brains/src/embedder/make.py" beforeDir="false" afterPath="$PROJECT_DIR$/learning-from-brains/src/embedder/make.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/learning-from-brains/src/parallelConncectomeLoader.py" beforeDir="false" afterPath="$PROJECT_DIR$/learning-from-brains/src/parallelConncectomeLoader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/learning-from-brains/src/preprocessor.py" beforeDir="false" afterPath="$PROJECT_DIR$/learning-from-brains/src/preprocessor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/learning-from-brains/src/unembedder.py" beforeDir="false" afterPath="$PROJECT_DIR$/learning-from-brains/src/unembedder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/learning-from-brains/tests/test_embed_dims.py" beforeDir="false" afterPath="$PROJECT_DIR$/learning-from-brains/tests/test_embed_dims.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2IpCsje9hw6iJmSpJb8eTIEFduD" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/ghait/Repos/learningFromBrains"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a78d4b61-91a8-4683-b2f2-62c115021ee0" name="Changes" comment="" />
+      <created>1670869347216</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1670869347216</updated>
+      <workItem from="1670869348737" duration="29000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

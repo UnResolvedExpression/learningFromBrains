@@ -1,0 +1,7 @@
+/dir_to_ignore/
+/hdcpbids/
+/hcp/
+/learning-from-brains/data/
+/learning-from-brains/hcp/
+/learning-from-brains/hcpbids/
+
