@@ -67,9 +67,9 @@ class Connectome():
 
         fmriData=fmriData.data
         #fmriData=np.pad(fmriData, [(0,1)], mode='constant', constant_values=0)
-        print('convConnectome feature sizes')
-        print(sample)
-        print(fmriData.shape)
+        # print('convConnectome feature sizes')
+        # print(sample)
+        # print(fmriData.shape)
         #fmriData=fmriData.transpose()
 
         #connectome=fmriData[:, 0:1000]
@@ -87,9 +87,9 @@ class Connectome():
         model.load_state_dict(torch.load(cnnFeature.configs.resultPath + "/enc_epoch_115_loss_0.000305522873532027")['model_state_dict'])
         #model.load_state_dict(torch.load(cnnFeature.configs.resultPath + "/enc_epoch_115_loss_0.000305522873532027"))
         model.eval()
-        print('input for enc')
-        print(img.size())
-        print(img)
+        # print('input for enc')
+        # print(img.size())
+        # print(img)
         img=torch.unsqueeze(img,dim=0)
         #img = fmriData.clone
         #summary(model,(1,20484))
@@ -113,9 +113,9 @@ class Connectome():
     ) -> Dict[str, torch.tensor]:
         batch_out = dict(batch)
         labels = torch.clone(batch['labels']) if 'labels' in batch else None
-        print(' prep_batch')
-        print(batch.keys())
-        print(batch['inputs'].size())
+        # print(' prep_batch')
+        # print(batch.keys())
+        # print(batch['inputs'].size())
         # print(batch['inputs'])
 
         if self.training_style != 'decoding':

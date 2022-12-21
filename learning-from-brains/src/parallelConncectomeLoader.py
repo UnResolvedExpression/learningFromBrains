@@ -48,7 +48,8 @@ def loadConnectome(sub,task,run,sample) -> Dict[str, torch.tensor]:
     #fmriData=fmriImg.get_fdata()
     sub=100307
     task="REST1"
-    directoryPath="C:/Users/ghait/Repos/learningFromBrains/hcp/100307/analysis/{}_2_fsaverage_3T_rfMRI_{}_LR-lh.stc".format(sub,task)
+    #directoryPath="C:/Users/ghait/Repos/learningFromBrains/hcp/100307/analysis/{}_2_fsaverage_3T_rfMRI_{}_LR-lh.stc".format(sub,task)
+    directoryPath="/hcp/100307/analysis/{}_2_fsaverage_3T_rfMRI_{}_LR-lh.stc".format(sub,task)
 
     fileObj=open(directoryPath)
     #print(fileObj)

@@ -120,10 +120,15 @@ python scripts/train.py --data data/downstream/ds002105 --n-train-subjects-per-d
 ```
 
 ```bash
-python scripts/train.py --data data/downstreamO/HCP --n-train-subjects-per-dataset 11 --n-val-subjects-per-dataset 3 --n-test-subjects-per-dataset 9 --architecture GPT --pretrained-model results/models/upstream/GPT_lrs-4_hds-12_embd-768_train-CSM_lr-0001_bs-64_drp-01_2022-12-07_18-11-36/model_final/pytorch_model.bin --training-style CSM --decoding-target task_label.pyd --num-decoding-classes 26 --training-steps 10000 --per-device-training-batch-size 64 --learning-rate 1e-4 --log-dir results/models/downstreamO/HCP --log-every-n-steps 1000
+python scripts/train.py --data data/downstreamO/HCP --n-train-subjects-per-dataset 11 --n-val-subjects-per-dataset 3 --n-test-subjects-per-dataset 9 --architecture GPT --pretrained-model results/models/upstream/GPT_lrs-4_hds-12_embd-768_train-CSM_lr-0001_bs-64_drp-01_2022-12-07_18-11-36/model_final/pytorch_model.bin --training-style CSM --decoding-target task_label.pyd --num-decoding-classes 26 --training-steps 100 --per-device-training-batch-size 64 --learning-rate 1e-4 --log-dir results/models/downstreamO/HCP --log-every-n-steps 99
 
 ```
+```bash
+python scripts/train.py --data data/downstreamO/HCP --n-train-subjects-per-dataset 11 --n-val-subjects-per-dataset 3 --n-test-subjects-per-dataset 9 --architecture GPT --pretrained-model results/models/upstream/hcp/GPT_lrs-4_hds-12_embd-768_train-CSM_lr-0001_bs-64_drp-01_2022-12-14_14-44-50/model_final/pytorch_model.bin --training-style CSM --decoding-target task_label.pyd --num-decoding-classes 26 --training-steps 100 --per-device-training-batch-size 64 --learning-rate 1e-4 --log-dir results/models/downstreamO/HCP --log-every-n-steps 10
 
+python scripts/train.py --data data/downstreamO/HCP --n-train-subjects-per-dataset 11 --n-val-subjects-per-dataset 3 --n-test-subjects-per-dataset 9 --architecture GPT --pretrained-model results/models/upstream/hcp/GPT_lrs-4_hds-12_embd-768_train-CSM_lr-0001_bs-64_drp-01_2022-12-19_17-25-54/model_final/pytorch_model.bin --training-style CSM --decoding-target task_label.pyd --num-decoding-classes 26 --training-steps 2 --per-device-training-batch-size 64 --learning-rate 1e-4 --log-dir results/models/downstreamO/HCP --log-every-n-steps 1 --validation-steps 1 --test-steps 1
+
+```
 Specifically, this will train the model on the data of 11 individuals contained in `data/downstream/ds002105`, while using the data of 3 and 9 other individuals for validation and testing respectively. During training, the model will learn to decode the 26 mental state labels encoded in the `task_label.pyd` entries of the data .tar files from the respective `bold.pyd` data of the same files. The model will be trained for 10,000 training steps at a mini-batch size of 64 samples per used training device (ie., GPU) at a learning rate of 1e-4 with the [AdamW](https://huggingface.co/docs/transformers/main_classes/optimizer_schedules) optimizer of the [HuggingFace transformers](https://huggingface.co/docs/transformers/index) library. At every 1000th training step, the model's performance will be evaluated and stored in the specified `--log-dir`.
 
 ```bash
@@ -135,9 +140,11 @@ This command will hopefully run the upstream training on ds000003 which has 13 s
 python scripts/train.py --data data/upstream/ds000003 --n-train-subjects-per-dataset 6 --n-val-subjects-per-dataset 2 --n-test-subjects-per-dataset 5 --architecture GPT --training-style CSM --training-steps 10000 --per-device-training-batch-size 64 --learning-rate 1e-4 --log-dir results/models/upstream/ds000003 --log-every-n-steps 1000
 ```
 
+upstream training
 ```bash
 python scripts/train.py --data data/upstream/HCP --n-train-subjects-per-dataset 6 --n-val-subjects-per-dataset 2 --n-test-subjects-per-dataset 5 --architecture GPT --training-style CSM --training-steps 10000 --per-device-training-batch-size 64 --learning-rate 1e-4 --log-dir results/models/upstream/HCP --log-every-n-steps 1000
-python scripts/train.py --data data/upstream/HCP --n-train-subjects-per-dataset 6 --n-val-subjects-per-dataset 2 --n-test-subjects-per-dataset 5 --architecture GPT --training-style CSM --training-steps 100 --per-device-training-batch-size 64 --learning-rate 1e-4 --log-dir results/models/upstream/HCP --log-every-n-steps 99
+python scripts/train.py --data data/upstream/HCP --n-train-subjects-per-dataset 6 --n-val-subjects-per-dataset 2 --n-test-subjects-per-dataset 5 --architecture GPT --training-style CSM --training-steps 10 --per-device-training-batch-size 64 --learning-rate 1e-4 --log-dir results/models/upstream/HCP --log-every-n-steps 9
+python scripts/train.py --data data/upstream/HCP --n-train-subjects-per-dataset 6 --n-val-subjects-per-dataset 2 --n-test-subjects-per-dataset 5 --architecture GPT --training-style CSM --training-steps 1 --per-device-training-batch-size 64 --learning-rate 1e-4 --log-dir results/models/upstream/HCP --log-every-n-steps 1 --validation-steps 1 --test-steps 1
 
 ```
 

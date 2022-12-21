@@ -23,8 +23,8 @@ class CSMEmbedder(BaseEmbedder):
                 size=(1, 1, self.in_dim) #this is supposed to be self.in_dim
             )
         )
-        print('self.in_dim')
-        print(self.in_dim)
+        # print('self.in_dim')
+        # print(self.in_dim)
         self.cls_embed = torch.nn.Parameter(
             torch.empty(
                 size=(1, 1, self.in_dim)
@@ -76,10 +76,23 @@ class CSMEmbedder(BaseEmbedder):
         input_shape = batch[inputs_key].size()
         print('input_shape')
         print(input_shape)
+        print('batch[attention_mask][i]==1')
+        print(batch['attention_mask'][0]==1)
+        print(batch['attention_mask'].size())
+        print()
         device = batch[inputs_key].device
         #print('mskinput')
+        for i in range(input_shape[0]):
+            high = sum(batch['attention_mask'][i] == 1).cpu().numpy()  # high is exclusive, so this accounts for 0-indexing
+            print(high)
+            if(high<=1):
+                print('high')
+                print(high)
+                print(i)
+
         masking_i = torch.cat(
             [
+
                 torch.randint(
                     low=1, # at least one seq value before mask!
                     high=sum(batch['attention_mask'][i]==1), # high is exclusive, so this accounts for 0-indexing
@@ -87,11 +100,11 @@ class CSMEmbedder(BaseEmbedder):
                     device=device
                 )
                 for i in range(input_shape[0])
+
             ],
             dim=0
         )
-        #print('masking_i')
-        #print(masking_i)
+
         print('batch[inputs_key],')
         print(batch[inputs_key])
         print(batch[inputs_key].size())
