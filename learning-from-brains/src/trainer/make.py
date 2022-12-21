@@ -137,6 +137,7 @@ def make_trainer(
         compute_metrics=None,
         **kwargs
 ) -> Trainer:
+
     """
     Make a Trainer object for training a model.
     Returns an instance of transformers.Trainer.
