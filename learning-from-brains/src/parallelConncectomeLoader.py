@@ -13,6 +13,7 @@ from nilearn.datasets import MNI152_FILE_PATH
 import matplotlib.pyplot as plt
 #from src.graph.connectome import Connectome
 from src.graph.convConnectome import Connectome
+from dirname import dirname
 
 #from src.batcher.base import BaseBatcher, _pad_seq_right_to_n
 import nibabel as nb
@@ -49,7 +50,7 @@ def loadConnectome(sub,task,run,sample) -> Dict[str, torch.tensor]:
     sub=100307
     task="REST1"
     #directoryPath="C:/Users/ghait/Repos/learningFromBrains/hcp/100307/analysis/{}_2_fsaverage_3T_rfMRI_{}_LR-lh.stc".format(sub,task)
-    directoryPath="/hcp/100307/analysis/{}_2_fsaverage_3T_rfMRI_{}_LR-lh.stc".format(sub,task)
+    directoryPath=os.path.join(dirname, "/hcp/100307/analysis/{}_2_fsaverage_3T_rfMRI_{}_LR-lh.stc".format(sub,task))
 
     fileObj=open(directoryPath)
     #print(fileObj)

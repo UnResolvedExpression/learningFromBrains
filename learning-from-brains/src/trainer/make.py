@@ -5,8 +5,8 @@ from typing import Dict, List, Tuple
 import numpy as np
 from sklearn.metrics import accuracy_score
 import torch
-from transformers import TrainingArguments,\
-    Trainer,\
+from transformers import TrainingArguments, \
+    Trainer, \
     TrainerCallback
 from src.trainer.base import Trainer
 
@@ -17,15 +17,15 @@ class CSVLogCallback(TrainerCallback):
         super().__init__()
         self.train_log_filepath = None
         self.eval_log_filepath = None
-        
+
     def on_log(
-        self,
-        args,
-        state,
-        control,
-        model,
-        **kwargs
-        ) -> None:
+            self,
+            args,
+            state,
+            control,
+            model,
+            **kwargs
+    ) -> None:
 
         if args.local_rank not in {-1, 0}:
             return
@@ -53,27 +53,27 @@ class CSVLogCallback(TrainerCallback):
         if is_eval:
             with open(self.eval_log_filepath, 'a') as f:
                 f.write('{},{},{}\n'.format(
-                        state.global_step,
-                        state.log_history[-1]['eval_loss'],
-                        state.log_history[-1]['eval_accuracy'] if 'eval_accuracy' in state.log_history[-1] else np.nan
-                    )
+                    state.global_step,
+                    state.log_history[-1]['eval_loss'],
+                    state.log_history[-1]['eval_accuracy'] if 'eval_accuracy' in state.log_history[-1] else np.nan
+                )
                 )
 
         else:
 
             with open(self.train_log_filepath, 'a') as f:
                 f.write('{},{},{}\n'.format(
-                        state.global_step,
-                        state.log_history[-1]['loss'] if 'loss' in state.log_history[-1] else state.log_history[-1]['train_loss'],
-                        state.log_history[-1]['learning_rate'] if 'learning_rate' in state.log_history[-1] else None
-                    )
+                    state.global_step,
+                    state.log_history[-1]['loss'] if 'loss' in state.log_history[-1] else state.log_history[-1][
+                        'train_loss'],
+                    state.log_history[-1]['learning_rate'] if 'learning_rate' in state.log_history[-1] else None
+                )
                 )
 
 
 def _cat_data_collator(features: List) -> Dict[str, torch.tensor]:
-
     if not isinstance(features[0], dict):
-        features = [vars(f) for f in features] 
+        features = [vars(f) for f in features]
 
     return {
         k: torch.cat(
@@ -97,50 +97,50 @@ def decoding_accuracy_metrics(eval_preds):
 
 
 def make_trainer(
-    model_init,
-    training_style,
-    train_dataset,
-    validation_dataset,
-    do_train: bool = True,
-    do_eval: bool = True,
-    run_name: str = None,
-    output_dir: str = None,
-    wandb_mode: str = 'online',
-    overwrite_output_dir: bool = True,
-    optimizers: Tuple[torch.optim.Optimizer, torch.optim.lr_scheduler.LambdaLR] = (None, None),
-    optim: str='adamw_hf',
-    learning_rate: float = 1e-4,
-    weight_decay: float = 0.1,
-    adam_beta1: float=0.9,
-    adam_beta2: float=0.999,
-    adam_epsilon: float=1e-8,
-    max_grad_norm: float=1.0,
-    per_device_train_batch_size: int = 64,
-    per_device_eval_batch_size: int = 64,
-    dataloader_num_workers: int = 0,
-    max_steps: int = 400000,
-    num_train_epochs: int = 1,
-    lr_scheduler_type: str = 'linear',
-    warmup_ratio: float = 0.01,
-    evaluation_strategy: str = 'steps',
-    prediction_loss_only: bool = False,
-    logging_strategy: str = 'steps',
-    save_strategy: str = 'steps',
-    save_steps: int = 10000,
-    logging_steps: int = 10000,
-    eval_steps: int = None,
-    logging_first_step: bool = True,
-    greater_is_better: bool = True,
-    seed: int = 1,
-    fp16: bool = True,
-    deepspeed: str = None,
-    compute_metrics = None,
-    **kwargs
-    ) -> Trainer:
+        model_init,
+        training_style,
+        train_dataset,
+        validation_dataset,
+        do_train: bool = True,
+        do_eval: bool = True,
+        run_name: str = None,
+        output_dir: str = None,
+        wandb_mode: str = 'online',
+        overwrite_output_dir: bool = True,
+        optimizers: Tuple[torch.optim.Optimizer, torch.optim.lr_scheduler.LambdaLR] = (None, None),
+        optim: str = 'adamw_hf',
+        learning_rate: float = 1e-4,
+        weight_decay: float = 0.1,
+        adam_beta1: float = 0.9,
+        adam_beta2: float = 0.999,
+        adam_epsilon: float = 1e-8,
+        max_grad_norm: float = 1.0,
+        per_device_train_batch_size: int = 64,
+        per_device_eval_batch_size: int = 64,
+        dataloader_num_workers: int = 0,
+        max_steps: int = 400000,
+        num_train_epochs: int = 1,
+        lr_scheduler_type: str = 'linear',
+        warmup_ratio: float = 0.01,
+        evaluation_strategy: str = 'steps',
+        prediction_loss_only: bool = False,
+        logging_strategy: str = 'steps',
+        save_strategy: str = 'steps',
+        save_steps: int = 10000,
+        logging_steps: int = 10000,
+        eval_steps: int = None,
+        logging_first_step: bool = True,
+        greater_is_better: bool = True,
+        seed: int = 1,
+        fp16: bool = True,
+        deepspeed: str = None,
+        compute_metrics=None,
+        **kwargs
+) -> Trainer:
     """
     Make a Trainer object for training a model.
     Returns an instance of transformers.Trainer.
-    
+
     See the HuggingFace transformers documentation for more details
     on input arguments:
     https://huggingface.co/transformers/main_classes/trainer.html
@@ -194,9 +194,9 @@ def make_trainer(
         evaluation_strategy=evaluation_strategy,
         eval_steps=eval_steps if eval_steps is not None else logging_steps,
         seed=seed,
-        #ValueError: Mixed precision training with AMP or APEX (`--fp16` or `--bf16`) and half precision evaluation (`--fp16_full_eval` or `--bf16_full_eval`) can only be used on CUDA devices.
-        #TODO
-        #fp16=fp16,
+        # ValueError: Mixed precision training with AMP or APEX (`--fp16` or `--bf16`) and half precision evaluation (`--fp16_full_eval` or `--bf16_full_eval`) can only be used on CUDA devices.
+        # TODO
+        # fp16=fp16,
         max_grad_norm=max_grad_norm,
         deepspeed=deepspeed,
         **kwargs
@@ -205,7 +205,7 @@ def make_trainer(
     data_collator = _cat_data_collator
     is_deepspeed = deepspeed is not None
     # TODO: custom compute_metrics so far not working in multi-gpu setting
-    compute_metrics = decoding_accuracy_metrics if training_style=='decoding' and compute_metrics is None else compute_metrics
+    compute_metrics = decoding_accuracy_metrics if training_style == 'decoding' and compute_metrics is None else compute_metrics
 
     trainer = Trainer(
         args=trainer_args,

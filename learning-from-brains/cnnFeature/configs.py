@@ -1,4 +1,5 @@
 import torch
+import os
 #dataPath="C:/Users/ghait/Repos/SSFLData/train"
 dataPath="C:/Users/ghait/Repos/learningFromBrains/hcp/100307/analysis"
 #validationDataPath="C:/Users/ghait/Repos/SSFLData/val"
