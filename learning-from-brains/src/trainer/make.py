@@ -164,7 +164,7 @@ def make_trainer(
     ----
     trainer: transformers.Trainer
     """
-
+    print('make/trainer TrainingArguments')
     trainer_args = TrainingArguments(
         output_dir=output_dir,
         run_name=run_name,
@@ -208,6 +208,7 @@ def make_trainer(
     # TODO: custom compute_metrics so far not working in multi-gpu setting
     compute_metrics = decoding_accuracy_metrics if training_style == 'decoding' and compute_metrics is None else compute_metrics
 
+    print('make/trainer Trainer')
     trainer = Trainer(
         args=trainer_args,
         model_init=model_init,
