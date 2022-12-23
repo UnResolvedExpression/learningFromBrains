@@ -62,13 +62,14 @@ def loadConnectome(sub,task,run,sample) -> Dict[str, torch.tensor]:
         BasePath="/space_lin1"
     else:
         sub=100307
-    directoryPath=basePath+"/hcp/{}/analysis/{}_2_fsaverage_3T_tfMRI_{}_LR-lh.stc".format(sub,sub,task)
+
+    directoryPath=BasePath+"/hcp/{}/analysis/{}_2_fsaverage_3T_tfMRI_{}_LR-lh.stc".format(sub,sub,task)
     if (not os.path.isfile(directoryPath)):
-        directoryPath = basePath + "/hcp/{}/analysis/{}_2_fsaverage_3T_rfMRI_{}_LR-lh.stc".format(sub, sub, task)
+        directoryPath = BasePath + "/hcp/{}/analysis/{}_2_fsaverage_3T_rfMRI_{}_LR-lh.stc".format(sub, sub, task)
     elif (not os.path.isfile(directoryPath)):
-        directoryPath = basePath + "/hcp/{}/analysis/{}_2_fsaverage_rfMRI_{}_LR-lh.stc".format(sub, sub, task)
+        directoryPath = BasePath + "/hcp/{}/analysis/{}_2_fsaverage_rfMRI_{}_LR-lh.stc".format(sub, sub, task)
     elif (not os.path.isfile(directoryPath)):
-        directoryPath = basePath + "/hcp/{}/analysis/{}_2_fsaverage_tfMRI_{}_LR-lh.stc".format(sub, sub, task)
+        directoryPath = BasePath + "/hcp/{}/analysis/{}_2_fsaverage_tfMRI_{}_LR-lh.stc".format(sub, sub, task)
     fmriData=mne.read_source_estimate(directoryPath)
 
 
