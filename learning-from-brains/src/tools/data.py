@@ -7,7 +7,15 @@ from typing import Tuple
 
 def grab_tarfile_paths(path) -> Tuple[str]:
     paths = os.listdir(path)
+
+    # relevant_path = "[path to folder]"
+    included_extensions = ['jpg', 'jpeg', 'bmp', 'png', 'gif']
+    # included_tasks= ['REST1']
+    included_tasks= ['REST1','EMOTION','SOCIAL','WM']
+    paths = [fn for fn in paths
+                  if any(task in fn for task in included_tasks)]
     tarfiles = []
+
 
     for p in paths:
 

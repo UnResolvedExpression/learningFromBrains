@@ -21,7 +21,6 @@ import mne
 from typing import Dict
 import torch
 
-
 def loadConnectome(sub,task,run,sample) -> Dict[str, torch.tensor]:
     #def loadConnectome(args: argparse.Namespace = None) -> Dict[str, torch.tensor]:
 
@@ -51,16 +50,38 @@ def loadConnectome(sub,task,run,sample) -> Dict[str, torch.tensor]:
     # task="REST1"
     # print("dirname")
     # print(basePath)
-    taskModifier='t'
-    if task=='REST':
-        taskModifier='r'
+    # taskModifier='t'
+    # if task=='REST':
+    #     taskModifier='r'
     #directoryPath="C:/Users/ghait/Repos/learningFromBrains/hcp/100307/analysis/{}_2_fsaverage_3T_rfMRI_{}_LR-lh.stc".format(sub,task)
     #directoryPath=os.path.join(basePath, ("hcp/100307/analysis/{}_2_fsaverage_3T_rfMRI_{}_LR-lh.stc".format(sub,task)))
-    directoryPath=basePath+"/hcp/100307/analysis/{}_2_fsaverage_3T_{}fMRI_{}_LR-lh.stc".format(sub,taskModifier,task)
-    fileObj=open(directoryPath)
+    # print(basePath)
+    BasePath=basePath
+
+    if "lin2" in BasePath:
+        BasePath="/space_lin1"
+    else:
+        sub=100307
+    directoryPath=basePath+"/hcp/{}/analysis/{}_2_fsaverage_3T_tfMRI_{}_LR-lh.stc".format(sub,sub,task)
+    if (not os.path.isfile(directoryPath)):
+        directoryPath = basePath + "/hcp/{}/analysis/{}_2_fsaverage_3T_rfMRI_{}_LR-lh.stc".format(sub, sub, task)
+    elif (not os.path.isfile(directoryPath)):
+        directoryPath = basePath + "/hcp/{}/analysis/{}_2_fsaverage_rfMRI_{}_LR-lh.stc".format(sub, sub, task)
+    elif (not os.path.isfile(directoryPath)):
+        directoryPath = basePath + "/hcp/{}/analysis/{}_2_fsaverage_tfMRI_{}_LR-lh.stc".format(sub, sub, task)
+    fmriData=mne.read_source_estimate(directoryPath)
+
+
+    # fileObj=open(directoryPath)
     #print(fileObj)
     #print("sep")
-    fmriData=mne.read_source_estimate(directoryPath)
+    # try:
+    #  fmriData=mne.read_source_estimate(directoryPath)
+    # except:
+    #     directoryPath = basePath + "/hcp/{}/analysis/{}_2_fsaverage_{}fMRI_{}_LR-lh.stc".format(sub, sub,
+    #                                                                                                taskModifier, task)
+    #     fmriData = mne.read_source_estimate(directoryPath)
+
     #print(fmriData.shape)
 
     #roi=nb.freesurfer.io.read_annot(roiPath)
