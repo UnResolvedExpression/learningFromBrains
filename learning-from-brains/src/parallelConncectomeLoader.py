@@ -47,8 +47,8 @@ def loadConnectome(sub,task,run,sample) -> Dict[str, torch.tensor]:
     #plotting.view_img(nl.image.mean_img(path), threshold=None)
     #fmriImg=nb.load(path)
     #fmriData=fmriImg.get_fdata()
-    sub=100307
-    task="REST1"
+    # sub=100307
+    # task="REST1"
     # print("dirname")
     # print(basePath)
 
