@@ -51,10 +51,12 @@ def loadConnectome(sub,task,run,sample) -> Dict[str, torch.tensor]:
     # task="REST1"
     # print("dirname")
     # print(basePath)
-
+    taskModifier='t'
+    if task=='REST':
+        taskModifier='r'
     #directoryPath="C:/Users/ghait/Repos/learningFromBrains/hcp/100307/analysis/{}_2_fsaverage_3T_rfMRI_{}_LR-lh.stc".format(sub,task)
     #directoryPath=os.path.join(basePath, ("hcp/100307/analysis/{}_2_fsaverage_3T_rfMRI_{}_LR-lh.stc".format(sub,task)))
-    directoryPath=basePath+"/hcp/100307/analysis/{}_2_fsaverage_3T_rfMRI_{}_LR-lh.stc".format(sub,task)
+    directoryPath=basePath+"/hcp/100307/analysis/{}_2_fsaverage_3T_{}fMRI_{}_LR-lh.stc".format(sub,taskModifier,task)
     fileObj=open(directoryPath)
     #print(fileObj)
     #print("sep")
