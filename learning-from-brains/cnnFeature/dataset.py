@@ -9,7 +9,7 @@ import mne
 class Dataset(object):
 
     def __init__(self, path):
-        self.imagesRef = sorted(glob.glob(path + '/*.stc'))
+        self.imagesRef = sorted(glob.glob(path + '/*/analysis/*.stc'))
         #print("self.imagesRef")
         #print(self.imagesRef)
 

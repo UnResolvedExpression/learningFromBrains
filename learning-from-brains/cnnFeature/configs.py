@@ -1,8 +1,13 @@
 import torch
 import os
+import pathlib
 from dirname import basePath
-#dataPath="C:/Users/ghait/Repos/SSFLData/train"
+dataPath="C:/Users/ghait/Repos/SSFLData/train"
 dataPath=basePath+"/hcp/100307/analysis"
+
+if  'lin' in pathlib.Path().absolute().as_posix():
+    dataPath="/space_lin1/hcp"
+
 #dataPath="C:/Users/ghait/Repos/learningFromBrains/hcp/100307/analysis"
 #validationDataPath="C:/Users/ghait/Repos/SSFLData/val"
 validationDataPath=None
