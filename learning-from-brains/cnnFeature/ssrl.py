@@ -56,7 +56,7 @@ if __name__ == '__main__':
                     tepoch.set_description(f"Epoch {epoch} Timepoint {timePoint}")
                     img = data[:,:,timePoint]
                     img = torch.nn.functional.normalize(img,p=2.0,dim=1)
-                    maskLength = 1000
+                    maskLength = random.randrange(0,4000)
                     # print('data.size')
                     # print(data.size())
                     # print('img.size')
@@ -65,14 +65,14 @@ if __name__ == '__main__':
                     #ry=random.randrange(0,300)
                     #cutout= img[:,:,rx:rx+100,ry:ry+100].clone()
                     maskedImg=img.clone()
-                    maskedImg[rx:rx+1000]=0
+                    maskedImg[rx:rx+maskLength]=0
                     #maskedImg[:,:,rx:rx+100,ry:ry+100]=torch.zeros(1,3,100, 100)
                     maskedImg = Variable(maskedImg).cuda()
                     # print('img.size')
                     # print(img.size())
                     img=Variable(img).cuda()
                     intermediate = enc(maskedImg)
-                    print(intermediate.shape)
+                    #print(intermediate.shape)
                     # print("intermediate.size")
                     # print(intermediate.size())
                     output=dec(intermediate)
