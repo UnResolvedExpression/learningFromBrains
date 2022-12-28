@@ -33,9 +33,9 @@ class Dataset(object):
         # lh,rh=self.imagesRef[idx]
         lh=self.imagesRef[idx]
         rh=lh.replace('lh','rh')
-        # fmriData = np.concatenate(mne.read_source_estimate(lh).data,
-        #                            mne.read_source_estimate(rh).data)
-        fmriData=mne.read_source_estimate(rh).data
+        fmriData = np.concatenate(mne.read_source_estimate(lh).data,
+                                   mne.read_source_estimate(rh).data)
+        #fmriData=mne.read_source_estimate(rh).data
         print(fmriData.shape)
         return fmriData
 
