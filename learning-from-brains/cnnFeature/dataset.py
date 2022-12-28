@@ -36,8 +36,9 @@ class Dataset(object):
         print('mne.read_source_estimate(lh).data')
         print(mne.read_source_estimate(lh).data)
         print(mne.read_source_estimate(lh).data.shape)
-        fmriData = np.concatenate(mne.read_source_estimate(lh).data,
-                                   mne.read_source_estimate(rh).data)
+        fmriData = np.concatenate((mne.read_source_estimate(lh).data,
+                                   mne.read_source_estimate(rh).data),
+                                  axis=1)
         #fmriData=mne.read_source_estimate(rh).data
         print(fmriData.shape)
         return fmriData
