@@ -16,7 +16,7 @@ class Dataset(object):
         for f_a in glob.glob(path + '/*/analysis/*-lh.stc'):
             # process_file(f_a, file_type='a')
             # process_file(file_directory + f_a[:-11] + "_data_b.dat", file_type='b')
-            self.imagesRef= ((f_a),(path + f_a.replace(('lh','rh'))))
+            self.imagesRef= (f_a),(path + f_a.replace('lh','rh'))
     def __getitem__(self, idx):
         # image = tf.io.read_file(self.imagesRef[idx])
         # #print("image")
