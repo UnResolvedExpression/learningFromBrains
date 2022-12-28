@@ -31,8 +31,9 @@ class Dataset(object):
         # #image /= 255.0
         # #print(image)
         lh,rh=self.imagesRef[idx]
-        fmriData = np.concatenate(mne.read_source_estimate(lh).data,
-                                   mne.read_source_estimate(rh.data))
+        # fmriData = np.concatenate(mne.read_source_estimate(lh).data,
+        #                            mne.read_source_estimate(rh.data))
+        fmriData=mne.read_source_estimate(rh.data)
         print(fmriData.shape)
         return fmriData
 
