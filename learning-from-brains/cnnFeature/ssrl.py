@@ -79,7 +79,7 @@ if __name__ == '__main__':
                     # lossImg=torch.zeros(20484)
                     # lossImg[:20464]=img
                     lossOut = torch.zeros(40960).cuda()
-                    lossOut[:40960] = output
+                    lossOut[:40968] = output
                     loss = criterion(lossOut,img)
                     decOptimizer.zero_grad()
                     loss.backward()
