@@ -33,14 +33,14 @@ class Dataset(object):
         # lh,rh=self.imagesRef[idx]
         lh=self.imagesRef[idx]
         rh=lh.replace('lh','rh')
-        print('mne.read_source_estimate(lh).data')
-        print(mne.read_source_estimate(lh).data)
-        print(mne.read_source_estimate(lh).data.shape)
+        # print('mne.read_source_estimate(lh).data')
+        # print(mne.read_source_estimate(lh).data)
+        # print(mne.read_source_estimate(lh).data.shape)
         fmriData = np.concatenate((mne.read_source_estimate(lh).data,
                                    mne.read_source_estimate(rh).data),
-                                  axis=1)
+                                  axis=0)
         #fmriData=mne.read_source_estimate(rh).data
-        print(fmriData.shape)
+        # print(fmriData.shape)
         return fmriData
 
     def __len__(self):

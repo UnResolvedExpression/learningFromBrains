@@ -67,8 +67,8 @@ if __name__ == '__main__':
                     maskedImg=img.clone()
                     #maskedImg[:,:,rx:rx+100,ry:ry+100]=torch.zeros(1,3,100, 100)
                     maskedImg = Variable(maskedImg).cuda()
-                    print('img.size')
-                    print(img.size())
+                    # print('img.size')
+                    # print(img.size())
                     img=Variable(img).cuda()
                     intermediate = enc(maskedImg)
                     # print("intermediate.size")
@@ -78,8 +78,8 @@ if __name__ == '__main__':
                     # print(output.size())
                     # lossImg=torch.zeros(20484)
                     # lossImg[:20464]=img
-                    lossOut = torch.zeros(20484).cuda()
-                    lossOut[:20464] = output
+                    lossOut = torch.zeros(20484*2).cuda()
+                    lossOut[:20464*2] = output
                     loss = criterion(lossOut,img)
                     decOptimizer.zero_grad()
                     loss.backward()
