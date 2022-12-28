@@ -13,10 +13,10 @@ class Dataset(object):
 
         #print("self.imagesRef")
         #print(self.imagesRef)
-        for f_a in glob.glob(path + '/*/analysis/*-lh.stc'):
-            # process_file(f_a, file_type='a')
-            # process_file(file_directory + f_a[:-11] + "_data_b.dat", file_type='b')
-            self.imagesRef= (f_a),(path + f_a.replace('lh','rh'))
+        # for f_a in glob.glob(path + '/*/analysis/*-lh.stc'):
+        #     # process_file(f_a, file_type='a')
+        #     # process_file(file_directory + f_a[:-11] + "_data_b.dat", file_type='b')
+        #     self.imagesRef+= (f_a),(path + f_a.replace('lh','rh'))
     def __getitem__(self, idx):
         # image = tf.io.read_file(self.imagesRef[idx])
         # #print("image")
@@ -30,9 +30,11 @@ class Dataset(object):
         # # normalization
         # #image /= 255.0
         # #print(image)
-        lh,rh=self.imagesRef[idx]
+        # lh,rh=self.imagesRef[idx]
+        lh=self.imagesRef[idx]
+        rh=lh.replace('lh','rh')
         # fmriData = np.concatenate(mne.read_source_estimate(lh).data,
-        #                            mne.read_source_estimate(rh.data))
+        #                            mne.read_source_estimate(rh).data)
         fmriData=mne.read_source_estimate(rh.data)
         print(fmriData.shape)
         return fmriData
