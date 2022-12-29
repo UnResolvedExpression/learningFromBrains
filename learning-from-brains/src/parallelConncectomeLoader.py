@@ -82,7 +82,7 @@ def loadConnectome(sub,task,run,sample) -> Dict[str, torch.tensor]:
     #     directoryPath = BasePath + "/hcp/{}/analysis/{}_2_fsaverage_tfMRI_{}_LR-lh.stc".format(sub, sub, task)
     #     # print(directoryPath)
     #     # print(os.path.isfile(directoryPath))
-    fmriData=mne.read_source_estimate(directoryPath)
+    fmriData=mne.read_source_estimate(directoryPath[0])
 
 
     # fileObj=open(directoryPath)
