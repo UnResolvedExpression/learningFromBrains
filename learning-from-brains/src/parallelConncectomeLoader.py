@@ -64,7 +64,7 @@ def loadConnectome(sub,task,run,sample) -> Dict[str, torch.tensor]:
     else:
         sub=100307
 
-    directoryPath = sorted(glob.glob(BasePath + ("/hcp/{}/analysis/{}*{}*-lh.stc")).__format__(sub,sub,task))
+    directoryPath = sorted(glob.glob(BasePath + ("/hcp/{}/analysis/{}*{}*-lh.stc").__format__(sub,sub,task)))
 
     # directoryPath=BasePath+"/hcp/{}/analysis/{}_2_fsaverage_3T_tfMRI_{}_LR-lh.stc".format(sub,sub,task)
     # # print(directoryPath)
