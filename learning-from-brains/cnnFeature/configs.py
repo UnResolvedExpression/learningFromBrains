@@ -13,7 +13,7 @@ if  'lin' in pathlib.Path().absolute().as_posix():
 #validationDataPath="C:/Users/ghait/Repos/SSFLData/val"
 validationDataPath=None
 #resultPath="C:/Users/ghait/Repos/learningFromBrains/learning-from-brains/cnnFeature/results"
-resultPath=basePath+"/cnnFeature/results"
+resultPath=basePath+"/results"
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 learning_rate=0.0005
 num_epochs=1500

@@ -84,7 +84,7 @@ class Connectome():
         #fmriData=(1,fmriData,20484)
 
         model = Enc().cuda()
-        model.load_state_dict(torch.load(cnnFeature.configs.resultPath + "/enc_epoch_115_loss_0.000305522873532027")['model_state_dict'])
+        model.load_state_dict(torch.load(cnnFeature.configs.resultPath + "/enc_epoch_4_loss_0.004465451929718256")['model_state_dict'])
         #model.load_state_dict(torch.load(cnnFeature.configs.resultPath + "/enc_epoch_115_loss_0.000305522873532027"))
         model.eval()
         # print('input for enc')
