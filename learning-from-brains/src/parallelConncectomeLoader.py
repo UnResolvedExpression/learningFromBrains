@@ -64,7 +64,9 @@ def loadConnectome(sub,task,run,sample) -> Dict[str, torch.tensor]:
     else:
         sub=100307
 
-    directoryPath = sorted(glob.glob(BasePath + "/hcp/{}/analysis/{}*{}*-lh.stc".format(sub,sub,task)))
+    directoryPathlh = sorted(glob.glob(BasePath + "/hcp/{}/analysis/{}*{}*-lh.stc".format(sub,sub,task)))
+    directoryPathrh = sorted(glob.glob(BasePath + "/hcp/{}/analysis/{}*{}*-rh.stc".format(sub,sub,task)))
+
     # print('directoryPath')
     # print(directoryPath[0])
     # directoryPath=BasePath+"/hcp/{}/analysis/{}_2_fsaverage_3T_tfMRI_{}_LR-lh.stc".format(sub,sub,task)
@@ -82,7 +84,10 @@ def loadConnectome(sub,task,run,sample) -> Dict[str, torch.tensor]:
     #     directoryPath = BasePath + "/hcp/{}/analysis/{}_2_fsaverage_tfMRI_{}_LR-lh.stc".format(sub, sub, task)
     #     # print(directoryPath)
     #     # print(os.path.isfile(directoryPath))
-    fmriData=mne.read_source_estimate(directoryPath[0])
+    fmriData = np.concatenate((mne.read_source_estimate(directoryPathlh).data,
+                               mne.read_source_estimate(directoryPathrh).data),
+                              axis=0)
+    # fmriData=mne.read_source_estimate(directoryPath[0])
 
 
     # fileObj=open(directoryPath)
