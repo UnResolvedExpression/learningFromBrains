@@ -73,6 +73,9 @@ class Connectome():
         #fmriData=fmriData.transpose()
 
         #connectome=fmriData[:, 0:1000]
+        print('sample issue')
+        print(fmriData.shape)
+        print(sample)
         fmriData=fmriData[:,int(sample)]
         #fmriData=[0,fmriData]
 
