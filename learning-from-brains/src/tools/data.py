@@ -89,8 +89,7 @@ def grab_tarfile_paths(path) -> Tuple[str]:
                     p
                 )
             )
-    print('len(tarfiles)')
-    print(len(tarfiles))
+
     return sorted(np.unique(tarfiles))
 
 
