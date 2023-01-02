@@ -44,7 +44,7 @@ def grab_tarfile_paths(path) -> Tuple[str]:
         print(len(directoryPathrhList)==0)
 
         if len(directoryPathlhList)==0 or len(directoryPathrhList)==0:
-            paths.remove(path)
+            paths.remove(p)
             print('removed')
     print('len(paths)')
     print(len(paths))
