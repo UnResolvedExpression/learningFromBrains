@@ -27,12 +27,15 @@ def grab_tarfile_paths(path) -> Tuple[str]:
 
     for path in paths:
         str = re.split(r'-|_', path)
+        print('path')
+        print(path)
+        print(str)
         (sub,task,run,sample)=(str[3], str[5], str[7], str[9])
         directoryPathlhList = sorted(glob.glob(basePath + "/hcp/{}/analysis/{}*{}*-lh.stc".format(sub, sub, task)))
         directoryPathrhList = sorted(glob.glob(basePath + "/hcp/{}/analysis/{}*{}*-rh.stc".format(sub, sub, task)))
         if len(directoryPathlhList) or len(directoryPathrhList)==0:
             paths.remove(path)
-   
+
     tarfiles = []
 
 
