@@ -11,7 +11,7 @@ from dirname import basePath
 def grab_tarfile_paths(path) -> Tuple[str]:
     paths = os.listdir(path)
     # relevant_path = "[path to folder]"
-    #included_extensions = ['jpg', 'jpeg', 'bmp', 'png', 'gif']
+    included_extensions = ['jpg', 'jpeg', 'bmp', 'png', 'gif']
     # included_tasks= ['REST1']
     #included_tasks= ['REST1','EMOTION','SOCIAL','WM']
     # paths = [fn for fn in paths
@@ -24,53 +24,34 @@ def grab_tarfile_paths(path) -> Tuple[str]:
     # directoryPathrhList = sorted(glob.glob(BasePath + "/hcp/{}/analysis/{}*{}*-rh.stc".format(sub, sub, task)))
     # if directoryPathlhList.__len__() or directoryPathrhList.__len__() == 0:
     #     continue
-    BasePath = basePath
-    if "lin2" in BasePath:
-        BasePath = "/space_lin1"
-    # for path in paths:
-    #     str = re.split(r'-|_', path)
-    #     print('path')
-    #     print(path)
-    #     print(str)
-    #     (sub,task)=(str[3], str[5])
-    #
-    #     directoryPathlhList = sorted(glob.glob(BasePath + "/hcp/{}/analysis/{}*{}*-lh.stc".format(sub, sub, task)))
-    #     directoryPathrhList = sorted(glob.glob(BasePath + "/hcp/{}/analysis/{}*{}*-rh.stc".format(sub, sub, task)))
-    #     print('directoryPathlhList')
-    #     print(BasePath + "/hcp/{}/analysis/{}*{}*-lh.stc".format(sub, sub, task))
-    #     print(directoryPathlhList)
-    #     print(directoryPathrhList)
-    #     print(len(directoryPathlhList)==0)
-    #     print(len(directoryPathrhList)==0)
-
-    #     if len(directoryPathlhList)==0 or len(directoryPathrhList)==0:
-    #         paths.remove(path)
-    #         print('removed')
-    # print('len(paths)')
-    # print(len(paths))
-    tarfiles = []
-
 
     for p in paths:
-
-        str = re.split(r'-|_', path)
+        str = re.split(r'-|_', p)
         print('path')
-        print(path)
+        print(p)
         print(str)
-        (sub, task) = (str[3], str[5])
-
+        (sub,task)=(str[3], str[5])
+        BasePath=basePath
+        if "lin2" in BasePath:
+            BasePath = "/space_lin1"
         directoryPathlhList = sorted(glob.glob(BasePath + "/hcp/{}/analysis/{}*{}*-lh.stc".format(sub, sub, task)))
         directoryPathrhList = sorted(glob.glob(BasePath + "/hcp/{}/analysis/{}*{}*-rh.stc".format(sub, sub, task)))
         print('directoryPathlhList')
         print(BasePath + "/hcp/{}/analysis/{}*{}*-lh.stc".format(sub, sub, task))
         print(directoryPathlhList)
         print(directoryPathrhList)
-        print(len(directoryPathlhList) == 0)
-        print(len(directoryPathrhList) == 0)
+        print(len(directoryPathlhList)==0)
+        print(len(directoryPathrhList)==0)
 
-        if len(directoryPathlhList) == 0 or len(directoryPathrhList) == 0:
-            continue
+        if len(directoryPathlhList)==0 or len(directoryPathrhList)==0:
+            paths.remove(path)
+            print('removed')
+    print('len(paths)')
+    print(len(paths))
+    tarfiles = []
 
+
+    for p in paths:
 
         if os.path.isdir(
             os.path.join(
@@ -108,7 +89,7 @@ def grab_tarfile_paths(path) -> Tuple[str]:
                     p
                 )
             )
-    print('len(tarfiles) ')
+    print('len(tarfiles)')
     print(len(tarfiles))
     return sorted(np.unique(tarfiles))
 
