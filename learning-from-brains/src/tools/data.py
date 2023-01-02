@@ -40,7 +40,7 @@ def grab_tarfile_paths(path) -> Tuple[str]:
         print(BasePath + "/hcp/{}/analysis/{}*{}*-lh.stc".format(sub, sub, task))
         print(directoryPathlhList)
         print(directoryPathrhList)
-        if len(directoryPathlhList) or len(directoryPathrhList)==0:
+        if (directoryPathlhList)==0 or len(directoryPathrhList)==0:
             paths.remove(path)
             print('removed')
 
