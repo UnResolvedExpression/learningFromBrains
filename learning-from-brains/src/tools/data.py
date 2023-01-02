@@ -48,7 +48,7 @@ def grab_tarfile_paths(path) -> Tuple[str]:
     #         print('removed')
     # print('len(paths)')
     # print(len(paths))
-    # tarfiles = []
+    tarfiles = []
 
 
     for p in paths:
