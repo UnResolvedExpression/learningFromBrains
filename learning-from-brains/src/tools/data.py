@@ -34,6 +34,7 @@ def grab_tarfile_paths(path) -> Tuple[str]:
         directoryPathlhList = sorted(glob.glob(basePath + "/hcp/{}/analysis/{}*{}*-lh.stc".format(sub, sub, task)))
         directoryPathrhList = sorted(glob.glob(basePath + "/hcp/{}/analysis/{}*{}*-rh.stc".format(sub, sub, task)))
         print('directoryPathlhList')
+        print(basePath + "/hcp/{}/analysis/{}*{}*-lh.stc".format(sub, sub, task))
         print(directoryPathlhList)
         if len(directoryPathlhList) or len(directoryPathrhList)==0:
             paths.remove(path)
