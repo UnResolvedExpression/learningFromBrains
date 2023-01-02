@@ -101,6 +101,13 @@ class BaseBatcher:
         ) -> Generator[Dict[str, torch.tensor], None, None]:
         dataset = wds.WebDataset(files)
 
+        # for sample in dataset:
+        #     for key, value in sample.items():
+        #         print(key, repr(value)[:50])
+        #         dataset.
+        #     print()
+
+
         if n_shuffle_shards is not None:
             dataset = dataset.shuffle(n_shuffle_shards)
         #print(self.preprocess_sample)
@@ -290,8 +297,10 @@ class BaseBatcher:
                     )
 
                 graph_inputs = loadConnectome(str[3],str[5],str[7],str[9])
-                if graph_inputs==None: #this will hopefully skip samples for which we do not have the data
-                    continue
+                # if graph_inputs==None: #this will hopefully skip samples for which we do not have the data
+                #     continue nevermind it was not happy with this
+                #     assert inputs_key in batch, f'{inputs_key} not found in batch'
+                # AssertionError: inputs not found in batch
 
                 seq_on, seq_len = self._sample_seq_on_and_len(bold_len=len(bold))
                 bold = bold[seq_on:seq_on+seq_len]

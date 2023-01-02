@@ -3,17 +3,36 @@
 import os
 import numpy as np
 from typing import Tuple
+import re
+import glob
+from dirname import basePath
 
 
 def grab_tarfile_paths(path) -> Tuple[str]:
     paths = os.listdir(path)
-
     # relevant_path = "[path to folder]"
     included_extensions = ['jpg', 'jpeg', 'bmp', 'png', 'gif']
     # included_tasks= ['REST1']
-    included_tasks= ['REST1','EMOTION','SOCIAL','WM']
-    paths = [fn for fn in paths
-                  if any(task in fn for task in included_tasks)]
+    #included_tasks= ['REST1','EMOTION','SOCIAL','WM']
+    # paths = [fn for fn in paths
+    #               if any(task in fn for task in included_tasks)]
+
+    # str = re.split(r'-|_', sample["__key__"])
+    # (str[3], str[5], str[7], str[9])
+    # # here we will remove entries we do not have the files for
+    # directoryPathlhList = sorted(glob.glob(BasePath + "/hcp/{}/analysis/{}*{}*-lh.stc".format(sub, sub, task)))
+    # directoryPathrhList = sorted(glob.glob(BasePath + "/hcp/{}/analysis/{}*{}*-rh.stc".format(sub, sub, task)))
+    # if directoryPathlhList.__len__() or directoryPathrhList.__len__() == 0:
+    #     continue
+
+    for path in paths:
+        str = re.split(r'-|_', path)
+        (sub,task,run,sample)=(str[3], str[5], str[7], str[9])
+        directoryPathlhList = sorted(glob.glob(basePath + "/hcp/{}/analysis/{}*{}*-lh.stc".format(sub, sub, task)))
+        directoryPathrhList = sorted(glob.glob(basePath + "/hcp/{}/analysis/{}*{}*-rh.stc".format(sub, sub, task)))
+        if len(directoryPathlhList) or len(directoryPathrhList)==0:
+            paths.remove(path)
+   
     tarfiles = []
 
 
