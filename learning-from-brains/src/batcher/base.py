@@ -288,7 +288,11 @@ class BaseBatcher:
                         t_r=t_r,
                         f_s=f_s
                     )
+
                 graph_inputs = loadConnectome(str[3],str[5],str[7],str[9])
+                if graph_inputs==None: #this will hopefully skip samples for which we do not have the data
+                    continue
+
                 seq_on, seq_len = self._sample_seq_on_and_len(bold_len=len(bold))
                 bold = bold[seq_on:seq_on+seq_len]
                 t_rs = np.arange(seq_len) * t_r

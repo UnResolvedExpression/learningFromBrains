@@ -65,8 +65,15 @@ def loadConnectome(sub,task,run,sample) -> Dict[str, torch.tensor]:
         sub=100307
     print('file path')
     print( "/hcp/{}/analysis/{}*{}*-lh.stc".format(sub,sub,task))
-    directoryPathlh = sorted(glob.glob(BasePath + "/hcp/{}/analysis/{}*{}*-lh.stc".format(sub,sub,task)))[0]
-    directoryPathrh = sorted(glob.glob(BasePath + "/hcp/{}/analysis/{}*{}*-rh.stc".format(sub,sub,task)))[0]
+
+    directoryPathlhList = sorted(glob.glob(BasePath + "/hcp/{}/analysis/{}*{}*-lh.stc".format(sub, sub, task)))
+    directoryPathrhList = sorted(glob.glob(BasePath + "/hcp/{}/analysis/{}*{}*-rh.stc".format(sub,sub,task)))
+    if directoryPathlhList.__len__() or directoryPathrhList.__len__() ==0:
+        return None
+
+
+    directoryPathlh = directoryPathlhList[0]
+    directoryPathrh = directoryPathrhList[0]
 
     # print('directoryPath')
     # print(directoryPath[0])
