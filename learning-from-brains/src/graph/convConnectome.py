@@ -76,7 +76,9 @@ class Connectome():
         print('sample issue')
         print(fmriData.shape)
         print(int(0))
-        fmriData=fmriData[:,int(sample)]
+        fmriData=fmriData[:,:]
+        print(fmriData.shape)
+
         #fmriData=[0,fmriData]
 
         fmriData=torch.tensor(fmriData).cuda()
