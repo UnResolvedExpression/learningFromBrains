@@ -14,6 +14,8 @@ import random
 from firstCnnModel import Enc
 from secondCnnModel import Dec
 import mne
+import nilearn as nl
+import nibabel as nb
 if __name__ == '__main__':
     print("Begin ssrlbase")
     if not os.path.exists(configs.resultPath):
@@ -21,12 +23,14 @@ if __name__ == '__main__':
     torch.manual_seed(configs.seed)
     dpath="/space_lin1/hcp/123925/Preprocessed/rfMRI_REST1_LR_hp2000_clean.nii.gz"
     #firstdata=mne.io.read_raw_bti(dpath)
-    seconddata=mne.read_source_estimate(dpath).data
+    #seconddata=mne.read_source_estimate(dpath).data
     print('f and s data')
+    print(nb.load(dpath))
+    print(nb.load(dpath).shape)
     # print(firstdata)
     # print(firstdata.shape)
-    print(seconddata)
-    print(seconddata.shape)
+    # print(seconddata)
+    # print(seconddata.shape)
     # model = encDec().cuda()
     # model = model.to(configs.device)
     enc=Enc().cuda()
