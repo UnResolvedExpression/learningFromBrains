@@ -63,12 +63,12 @@ def loadConnectome(sub,task,run,sample) -> Dict[str, torch.tensor]:
         BasePath="/space_lin1"
     else:
         sub=100307
-    print('file path')
-    print( BasePath+"/hcp/{}/analysis/{}*{}*-lh.stc".format(sub,sub,task))
+    # print('file path')
+    # print( BasePath+"/hcp/{}/analysis/{}*{}*-lh.stc".format(sub,sub,task))
 
     directoryPathlhList = sorted(glob.glob(BasePath + "/hcp/{}/analysis/{}*{}*-lh.stc".format(sub, sub, task)))
     directoryPathrhList = sorted(glob.glob(BasePath + "/hcp/{}/analysis/{}*{}*-rh.stc".format(sub,sub,task)))
-    if directoryPathlhList.__len__() or directoryPathrhList.__len__() ==0:
+    if directoryPathlhList.__len__()==0 or directoryPathrhList.__len__() ==0:
         print('stc files not found')
         # return None
 
