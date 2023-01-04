@@ -20,11 +20,11 @@ if __name__ == '__main__':
         os.makedirs(configs.resultPath)
     torch.manual_seed(configs.seed)
     dpath="/space_lin1/hcp/123925/Preprocessed/rfMRI_REST1_LR_hp2000_clean.nii.gz"
-    firstdata=mne.io.read_raw_bti(dpath)
+    #firstdata=mne.io.read_raw_bti(dpath)
     seconddata=mne.read_source_estimate(dpath).data
     print('f and s data')
-    print(firstdata)
-    print(firstdata.shape)
+    # print(firstdata)
+    # print(firstdata.shape)
     print(seconddata)
     print(seconddata.shape)
     # model = encDec().cuda()
