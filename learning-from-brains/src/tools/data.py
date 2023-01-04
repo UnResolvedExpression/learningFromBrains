@@ -27,27 +27,29 @@ def grab_tarfile_paths(path) -> Tuple[str]:
 
     for p in paths:
         str = re.split(r'-|_', p)
-        print('path')
-        print(p)
-        print(str)
+        # print('path')
+        # print(p)
+        # print(str)
         (sub,task)=(str[3], str[5])
         BasePath=basePath
         if "lin2" in BasePath:
             BasePath = "/space_lin1"
         directoryPathlhList = sorted(glob.glob(BasePath + "/hcp/{}/analysis/{}*{}*-lh.stc".format(sub, sub, task)))
         directoryPathrhList = sorted(glob.glob(BasePath + "/hcp/{}/analysis/{}*{}*-rh.stc".format(sub, sub, task)))
-        print('directoryPathlhList')
-        print(BasePath + "/hcp/{}/analysis/{}*{}*-lh.stc".format(sub, sub, task))
-        print(directoryPathlhList)
-        print(directoryPathrhList)
-        print(len(directoryPathlhList)==0)
-        print(len(directoryPathrhList)==0)
+
+        if task == 'EMOTION':
+            print('directoryPathlhList')
+            print(BasePath + "/hcp/{}/analysis/{}*{}*-lh.stc".format(sub, sub, task))
+            print(directoryPathlhList)
+            print(directoryPathrhList)
+            print(len(directoryPathlhList) == 0)
+            print(len(directoryPathrhList) == 0)
 
         if len(directoryPathlhList)==0 or len(directoryPathrhList)==0:
             paths.remove(p)
             print('removed')
-    print('len(paths)')
-    print(len(paths))
+    # print('len(paths)')
+    # print(len(paths))
     tarfiles = []
 
 
