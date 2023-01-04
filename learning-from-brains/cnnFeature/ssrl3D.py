@@ -16,7 +16,7 @@ from secondCnnModel import Dec
 import mne
 import nilearn as nl
 import nibabel as nb
-from dirname import basePath
+# from dirname import basePath
 
 if __name__ == '__main__':
     print("Begin ssrlbase")
