@@ -65,7 +65,7 @@ class Connectome():
 
         #TODO subtrack some of the time to match the other data for csm training
 
-        fmriData=fmriData.data
+        fmriData=np.array(fmriData.data)
         #fmriData=np.pad(fmriData, [(0,1)], mode='constant', constant_values=0)
         # print('convConnectome feature sizes')
         # print(sample)
