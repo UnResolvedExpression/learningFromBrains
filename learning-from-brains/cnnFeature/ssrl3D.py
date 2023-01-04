@@ -16,6 +16,8 @@ from secondCnnModel import Dec
 import mne
 import nilearn as nl
 import nibabel as nb
+from dirname import basePath
+
 if __name__ == '__main__':
     print("Begin ssrlbase")
     if not os.path.exists(configs.resultPath):
@@ -27,6 +29,9 @@ if __name__ == '__main__':
     print('f and s data')
     print(nb.load(dpath))
     print(nb.load(dpath).shape)
+    downstreampath="/space_lin2/mmajjani/ds002105/sub-02/ses-a1/func/sub-02_ses-a1_task-a_run-1_bold.nii.gz"
+    print(nb.load(downstreampath))
+    print(nb.load(downstreampath).shape)
     # print(firstdata)
     # print(firstdata.shape)
     # print(seconddata)
