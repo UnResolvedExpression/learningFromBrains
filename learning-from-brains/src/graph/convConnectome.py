@@ -97,7 +97,7 @@ class Connectome():
         # print('input for enc')
         # print(img.size())
         # print(img)
-        img=torch.unsqueeze(img,dim=0)
+        #img=torch.unsqueeze(img,dim=0)
         #img = fmriData.clone
         #summary(model,(1,20484))
         connectome = model(img)
