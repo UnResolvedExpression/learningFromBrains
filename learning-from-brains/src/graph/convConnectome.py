@@ -87,7 +87,7 @@ class Connectome():
         #fmriData=[0,fmriData]
         img=fmriData.clone()
         img=torch.nn.functional.normalize(img, p=2.0, dim=0)
-        img = Variable(torch.tensor(img)).cuda()
+        img = Variable(img.clone().detach()).cuda()
         #fmriData=(1,fmriData,20484)
 
         model = Enc().cuda()
