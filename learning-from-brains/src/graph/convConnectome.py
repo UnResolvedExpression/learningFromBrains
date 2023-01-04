@@ -76,6 +76,8 @@ class Connectome():
         print('sample issue')
         print(fmriData.shape)
         print(int(0))
+        print(fmriData)
+        print(fmriData[0])
         fmriData=fmriData[ 0:fmriData.shape[0] , 0 ]
         print(fmriData.shape)
 
