@@ -47,7 +47,8 @@ def grab_tarfile_paths(path) -> Tuple[str]:
 
         if len(directoryPathlhList)==0 or len(directoryPathrhList)==0:
             paths.remove(p)
-            print('removed')
+            if task == 'LANGUAGE':
+                print('removed')
     # print('len(paths)')
     # print(len(paths))
     tarfiles = []
