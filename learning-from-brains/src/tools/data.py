@@ -38,19 +38,22 @@ def grab_tarfile_paths(path) -> Tuple[str]:
         directoryPathlhList = sorted(glob.glob(BasePath + "/hcp/{}/analysis/{}*{}*-lh.stc".format(sub, sub, task)))
         directoryPathrhList = sorted(glob.glob(BasePath + "/hcp/{}/analysis/{}*{}*-rh.stc".format(sub, sub, task)))
 
-        if task == 'LANGUAGE':
-            print('directoryPathlhList')
-            print(BasePath + "/hcp/{}/analysis/{}*{}*-lh.stc".format(sub, sub, task))
-            print(directoryPathlhList)
-            print(directoryPathrhList)
-            print(len(directoryPathlhList) == 0)
-            print(len(directoryPathrhList) == 0)
+        # if task == 'LANGUAGE':
+        #     # print('directoryPathlhList')
+            # print(BasePath + "/hcp/{}/analysis/{}*{}*-lh.stc".format(sub, sub, task))
+            # print(directoryPathlhList)
+            # print(directoryPathrhList)
+            # print(len(directoryPathlhList) == 0)
+            # print(len(directoryPathrhList) == 0)
 
-        if len(directoryPathlhList)==0 or len(directoryPathrhList)==0:
-            paths.remove(p)
-            if task == 'LANGUAGE':
-                print('removed')
-        else:
+        # if len(directoryPathlhList)==0 or len(directoryPathrhList)==0:
+        #     # paths.remove(p)
+        #     # if task == 'LANGUAGE':
+        #     #     print('removed')
+        # else:
+        #     pathsFiltered.append(p)
+
+        if len(directoryPathlhList)>0 and len(directoryPathrhList)>0:
             pathsFiltered.append(p)
     # print('len(paths)')
     # print(len(paths))
