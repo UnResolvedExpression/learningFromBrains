@@ -10,6 +10,7 @@ from dirname import basePath
 
 def grab_tarfile_paths(path) -> Tuple[str]:
     paths = os.listdir(path)
+    pathsFiltered=[]
     # relevant_path = "[path to folder]"
     included_extensions = ['jpg', 'jpeg', 'bmp', 'png', 'gif']
     # included_tasks= ['REST1']
@@ -49,12 +50,14 @@ def grab_tarfile_paths(path) -> Tuple[str]:
             paths.remove(p)
             if task == 'LANGUAGE':
                 print('removed')
+        else:
+            pathsFiltered.append(p)
     # print('len(paths)')
     # print(len(paths))
     tarfiles = []
 
 
-    for p in paths:
+    for p in pathsFiltered:
 
         if os.path.isdir(
             os.path.join(
