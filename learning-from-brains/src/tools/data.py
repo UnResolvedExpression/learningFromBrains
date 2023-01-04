@@ -37,7 +37,7 @@ def grab_tarfile_paths(path) -> Tuple[str]:
         directoryPathlhList = sorted(glob.glob(BasePath + "/hcp/{}/analysis/{}*{}*-lh.stc".format(sub, sub, task)))
         directoryPathrhList = sorted(glob.glob(BasePath + "/hcp/{}/analysis/{}*{}*-rh.stc".format(sub, sub, task)))
 
-        if task == 'EMOTION':
+        if task == 'LANGUAGE':
             print('directoryPathlhList')
             print(BasePath + "/hcp/{}/analysis/{}*{}*-lh.stc".format(sub, sub, task))
             print(directoryPathlhList)
