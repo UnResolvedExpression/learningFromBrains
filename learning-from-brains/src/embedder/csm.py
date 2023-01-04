@@ -95,7 +95,7 @@ class CSMEmbedder(BaseEmbedder):
 
                 torch.randint(
                     low=1, # at least one seq value before mask!
-                    high=sum(batch['attention_mask'][i]==1), # high is exclusive, so this accounts for 0-indexing
+                    high=sum(batch['attention_mask'][i]==1)+1, # high is exclusive, so this accounts for 0-indexing
                     size=(1,),
                     device=device
                 )
