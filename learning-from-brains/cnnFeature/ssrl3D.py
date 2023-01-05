@@ -120,8 +120,9 @@ if __name__ == '__main__':
                     # lossImg=torch.zeros(20484)
                     # lossImg[:20464]=img
 
-                    # lossOut = torch.zeros(40968).cuda()
-                    # lossOut[:40960] = output
+                    print(output.shape)
+                    lossOut = torch.zeros(91,91,91).cuda()
+                    lossOut[:88,:88,:88] = output
 
                     #loss = criterion(lossOut,img)
 
