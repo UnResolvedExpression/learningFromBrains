@@ -13,8 +13,8 @@ class Enc(nn.Module):
         #     nn.MaxPool1d(2, stride=1)  # b, 8, 2, 2
         # )
         self.encoder = nn.Sequential(
-            nn.Conv3d(1, 4, 16, stride=4),
-            nn.Conv3d(4, 8, 16, stride=4),
+            nn.Conv3d(1, 4, 8, stride=4),
+            nn.Conv3d(4, 8, 8, stride=4),
             nn.Conv3d(8, 1, 8, stride=3)
         )
         # self.decoder = nn.Sequential(
