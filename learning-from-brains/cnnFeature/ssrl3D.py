@@ -100,7 +100,7 @@ if __name__ == '__main__':
                     #cutout= img[:,:,rx:rx+100,ry:ry+100].clone()
                     maskedImg=img.clone()
                     #maskedImg[rx:rx+maskLength]=0
-                    maskedImg=maskedImg[rx:rx+maskSize[0],ry:ry+maskSize[1],rz:rz+maskSize[2]]
+                    maskedImg[rx:rx+maskSize[0],ry:ry+maskSize[1],rz:rz+maskSize[2]]=torch.zeros(maskSize[0],maskSize[1],maskSize[2])
                     #maskedImg[:,:,rx:rx+100,ry:ry+100]=torch.zeros(1,3,100, 100)
                     maskedImg = Variable(maskedImg).cuda()
                     # print('img.size')
