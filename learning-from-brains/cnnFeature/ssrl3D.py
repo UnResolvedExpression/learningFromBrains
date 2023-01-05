@@ -17,7 +17,7 @@ import mne
 import nilearn as nl
 import nibabel as nb
 # from dirname import basePath
-
+import numpy as np
 if __name__ == '__main__':
     print("Begin ssrlbase 3D")
     if not os.path.exists(configs.resultPath):
@@ -72,6 +72,7 @@ if __name__ == '__main__':
                 print(data.shape)
                 epoch_loss=0
                 data=torch.squeeze(data)
+                data = data.astype(np.float)
                 for timePoint in range(0,data.shape[3]):
                     tepoch.set_description(f"Epoch {epoch} Timepoint {timePoint}")
                     preimg = torch.nn.functional.normalize(data,p=2.0,dim=3) #this is potentially a dataleak...
