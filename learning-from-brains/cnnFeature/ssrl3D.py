@@ -100,6 +100,10 @@ if __name__ == '__main__':
                     # print('img.size')
                     # print(img.size())
                     img=Variable(img).cuda()
+
+                    img=torch.unsqueeze(img,0)
+                    maskedImg=torch.unsqueeze(maskedImg,0)
+
                     intermediate = enc(maskedImg)
                     #print(intermediate.shape)
                     # print("intermediate.size")
