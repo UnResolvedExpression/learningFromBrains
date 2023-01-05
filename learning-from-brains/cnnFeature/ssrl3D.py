@@ -19,19 +19,19 @@ import nibabel as nb
 # from dirname import basePath
 
 if __name__ == '__main__':
-    print("Begin ssrlbase")
+    print("Begin ssrlbase 3D")
     if not os.path.exists(configs.resultPath):
         os.makedirs(configs.resultPath)
     torch.manual_seed(configs.seed)
-    dpath="/space_lin1/hcp/123925/Preprocessed/rfMRI_REST1_LR_hp2000_clean.nii.gz"
+    # dpath="/space_lin1/hcp/123925/Preprocessed/rfMRI_REST1_LR_hp2000_clean.nii.gz"
     #firstdata=mne.io.read_raw_bti(dpath)
     #seconddata=mne.read_source_estimate(dpath).data
-    print('f and s data')
-    print(nb.load(dpath))
-    print(nb.load(dpath).shape)
-    downstreampath="/space_lin2/mmajjani/ds002105/sub-02/ses-a1/func/sub-02_ses-a1_task-a_run-1_bold.nii.gz"
-    print(nb.load(downstreampath))
-    print(nb.load(downstreampath).shape)
+    # print('f and s data')
+    # print(nb.load(dpath))
+    # print(nb.load(dpath).shape)
+    # downstreampath="/space_lin2/mmajjani/ds002105/sub-02/ses-a1/func/sub-02_ses-a1_task-a_run-1_bold.nii.gz"
+    # print(nb.load(downstreampath))
+    # print(nb.load(downstreampath).shape)
     # print(firstdata)
     # print(firstdata.shape)
     # print(seconddata)
@@ -40,11 +40,12 @@ if __name__ == '__main__':
     # model = model.to(configs.device)
     enc=Enc().cuda()
     dec=Dec().cuda()
-    trainDataset = Dataset(configs.dataPath)
+    trainDataset = Dataset(configs.dataPath3D)
     train_size = int(0.8 * len(trainDataset))
     print(train_size)
     val_size = len(trainDataset) - train_size
     print(val_size)
+
     if configs.validationDataPath==None:
         trainDataset, validationDataset = torch.utils.data.random_split(trainDataset, [train_size, val_size])
     else:

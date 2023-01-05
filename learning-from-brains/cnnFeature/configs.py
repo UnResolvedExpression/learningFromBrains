@@ -3,11 +3,14 @@ import os
 import pathlib
 #from dirname import basePath
 dataPath="C:/Users/ghait/Repos/SSFLData/train"
+dataPath3D="C:/Users/ghait/Repos/SSFLData/train"
 #dataPath=basePath+"/hcp/100307/analysis"
 basePath=pathlib.Path().absolute().as_posix()
 
 if  'lin' in pathlib.Path().absolute().as_posix():
     dataPath="/space_lin1/hcp"
+if 'lin' in pathlib.Path().absolute().as_posix():
+    dataPath = "/space_lin2/mmajjani/ds002105"
 
 #dataPath="C:/Users/ghait/Repos/learningFromBrains/hcp/100307/analysis"
 #validationDataPath="C:/Users/ghait/Repos/SSFLData/val"
