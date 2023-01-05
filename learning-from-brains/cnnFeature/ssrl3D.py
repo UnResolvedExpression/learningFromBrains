@@ -114,7 +114,7 @@ if __name__ == '__main__':
                     print(intermediate.shape)
                     # print("intermediate.size")
                     # print(intermediate.size())
-                    output=dec(intermediate)
+                    output = dec(intermediate)
                     # print("output.size")
                     # print(output.size())
                     # lossImg=torch.zeros(20484)
