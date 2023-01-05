@@ -11,7 +11,7 @@ class Dataset(object):
     def __init__(self, path):
         #/sub-02/ses-a1/func/sub-02_ses-a1_task-a_run-1_bold.nii.gz
 
-        self.imagesRef = sorted(glob.glob(path + '/*/*/*_bold.nii.gz'))
+        self.imagesRef = sorted(glob.glob(path + '/Preprocessed/*_bold.nii.gz'))
 
         #print("self.imagesRef")
         #print(self.imagesRef)
