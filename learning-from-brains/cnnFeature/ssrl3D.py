@@ -73,8 +73,8 @@ if __name__ == '__main__':
                 epoch_loss=0
                 for timePoint in range(0,data.shape[3]):
                     tepoch.set_description(f"Epoch {epoch} Timepoint {timePoint}")
-                    img = torch.nn.functional.normalize(img,p=2.0,dim=3) #this is potentially a dataleak...
-                    img = data[:,:,:,timePoint]
+                    preimg = torch.nn.functional.normalize(data,p=2.0,dim=3) #this is potentially a dataleak...
+                    img = preimg[:,:,:,timePoint]
                     print('img.shape')
                     print(img.shape)
                     maskSize=(random.randrange(1,int(img.shape[0]/4)),
