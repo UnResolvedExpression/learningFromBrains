@@ -3,7 +3,7 @@ import configs
 import torch
 from torch import nn
 import os
-from dataset import Dataset
+from dataset3d import Dataset
 from encDec import encDec
 from torch.autograd import Variable
 import torchvision
@@ -11,8 +11,8 @@ from torchvision.utils import save_image
 from tqdm import tqdm
 import torch.nn.functional as F
 import random
-from firstCnnModel import Enc
-from secondCnnModel import Dec
+from firstCnnModel3D import Enc
+from secondCnnModel3D import Dec
 import mne
 import nilearn as nl
 import nibabel as nb
