@@ -71,20 +71,29 @@ if __name__ == '__main__':
                 # print("data.shape")
                 # print(data.shape)
                 epoch_loss=0
-                for timePoint in range(0,data.shape[2]):
+                for timePoint in range(0,data.shape[3]):
                     tepoch.set_description(f"Epoch {epoch} Timepoint {timePoint}")
-                    img = data[:,:,timePoint]
+                    img = data[:,:,:,timePoint]
                     img = torch.nn.functional.normalize(img,p=2.0,dim=1)
-                    maskLength = random.randrange(0,4000)
+                    print('img.shape')
+                    print(img.shape)
+                    maskSize=(random.randrange(1,int(img.shape[0]/4)),
+                              random.randrange(1,int(img.shape[1]/4)),
+                              random.randrange(1,int(img.shape[2]/4)))
+                    #maskLength = random.randrange(0,4000)
                     # print('data.size')
                     # print(data.size())
                     # print('img.size')
                     # print(img.size())
-                    rx=random.randrange(0,img.size()[1]-maskLength)
+                    rx=random.randrange(0,img.shape[0]-maskSize[0])
+                    ry=random.randrange(0,img.shape[1]-maskSize[1])
+                    rz=random.randrange(0,img.shape[2]-maskSize[2])
+
                     #ry=random.randrange(0,300)
                     #cutout= img[:,:,rx:rx+100,ry:ry+100].clone()
                     maskedImg=img.clone()
-                    maskedImg[rx:rx+maskLength]=0
+                    #maskedImg[rx:rx+maskLength]=0
+                    maskedImg=maskedImg[rx:rx+maskSize[0],ry:ry+maskSize[1],rz:rz+maskSize[2]]
                     #maskedImg[:,:,rx:rx+100,ry:ry+100]=torch.zeros(1,3,100, 100)
                     maskedImg = Variable(maskedImg).cuda()
                     # print('img.size')
@@ -99,9 +108,14 @@ if __name__ == '__main__':
                     # print(output.size())
                     # lossImg=torch.zeros(20484)
                     # lossImg[:20464]=img
-                    lossOut = torch.zeros(40968).cuda()
-                    lossOut[:40960] = output
-                    loss = criterion(lossOut,img)
+
+                    # lossOut = torch.zeros(40968).cuda()
+                    # lossOut[:40960] = output
+
+                    #loss = criterion(lossOut,img)
+
+                    loss = criterion(output,img)
+
                     decOptimizer.zero_grad()
                     loss.backward()
                     decOptimizer.step()
