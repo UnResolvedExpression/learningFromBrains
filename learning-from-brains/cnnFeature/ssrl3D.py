@@ -66,10 +66,10 @@ if __name__ == '__main__':
             saveImg=0;
             debugImg=0;
             total_loss = 0
-            print(tepoch)
+            # print(tepoch)
             for data in tepoch:
-                print("data.shape")
-                print(data.shape)
+                # print("data.shape")
+                # print(data.shape)
                 epoch_loss=0
                 data=torch.squeeze(data)
                 #data = np.array(data).astype(np.float)
@@ -81,9 +81,9 @@ if __name__ == '__main__':
                     tepoch.set_description(f"Epoch {epoch} Timepoint {timePoint}")
                     #data=torch.tensor(data)
                     img = preimg[:,:,:,timePoint]
-                    print('img.shape')
-                    print(img.shape)
-                    print(torch.reshape(img,(-1,)))
+                    # print('img.shape')
+                    # print(img.shape)
+                    # print(torch.reshape(img,(-1,)))
                     maskSize=(random.randrange(1,int(img.shape[0]/4)),
                               random.randrange(1,int(img.shape[1]/4)),
                               random.randrange(1,int(img.shape[2]/4)))
@@ -111,7 +111,7 @@ if __name__ == '__main__':
                     maskedImg=torch.unsqueeze(maskedImg,0)
 
                     intermediate = enc(maskedImg)
-                    print(intermediate.shape)
+                    # print(intermediate.shape)
                     # print("intermediate.size")
                     # print(intermediate.size())
                     output = dec(intermediate)
@@ -119,11 +119,11 @@ if __name__ == '__main__':
                     # print(output.size())
                     # lossImg=torch.zeros(20484)
                     # lossImg[:20464]=img
-                    print('output.shape')
-                    print(output.shape)
+                    # print('output.shape')
+                    # print(output.shape)
                     lossOut = torch.zeros(img.shape).cuda()
-                    print('lossout.shape')
-                    print(lossOut.shape)
+                    # print('lossout.shape')
+                    # print(lossOut.shape)
                     lossOut[0,:88,:100,:88] = output
                     #RuntimeError: The expanded size of the tensor (88) must match the existing size (100) at non-singleton dimension 1.  Target sizes: [88, 88, 88].  Tensor sizes: [88, 100, 88]
                     #I made there variable instead of hard coded
