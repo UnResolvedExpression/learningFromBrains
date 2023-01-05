@@ -111,7 +111,7 @@ if __name__ == '__main__':
                     maskedImg=torch.unsqueeze(maskedImg,0)
 
                     intermediate = enc(maskedImg)
-                    #print(intermediate.shape)
+                    print(intermediate.shape)
                     # print("intermediate.size")
                     # print(intermediate.size())
                     output=dec(intermediate)
