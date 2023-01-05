@@ -75,6 +75,7 @@ if __name__ == '__main__':
                 data = np.array(data).astype(np.float)
                 for timePoint in range(0,data.shape[3]):
                     tepoch.set_description(f"Epoch {epoch} Timepoint {timePoint}")
+                    data=torch.tensor(data)
                     preimg = torch.nn.functional.normalize(data,p=2.0,dim=3) #this is potentially a dataleak...
                     img = preimg[:,:,:,timePoint]
                     print('img.shape')
