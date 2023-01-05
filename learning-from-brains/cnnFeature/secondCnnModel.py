@@ -21,9 +21,9 @@ class Dec(nn.Module):
         #     #nn.Tanh()
         # )
         self.decoder = nn.Sequential(
-            nn.ConvTranspose1d(1, 8, 4, stride=1, output_padding=1),
-            nn.ConvTranspose1d(8, 4, 8, stride=2, output_padding=1),
-            nn.ConvTranspose1d(4, 1, 8, stride=2, output_padding=0)
+            nn.ConvTranspose1d(1, 8, 4, stride=3, output_padding=1),
+            nn.ConvTranspose1d(8, 4, 8, stride=4, output_padding=1),
+            nn.ConvTranspose1d(4, 1, 8, stride=4, output_padding=0)
         )
 
     def forward(self, x):
