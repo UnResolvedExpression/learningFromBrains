@@ -78,6 +78,7 @@ if __name__ == '__main__':
                     img = preimg[:,:,:,timePoint]
                     print('img.shape')
                     print(img.shape)
+                    print(torch.reshape(img,-1))
                     maskSize=(random.randrange(1,int(img.shape[0]/4)),
                               random.randrange(1,int(img.shape[1]/4)),
                               random.randrange(1,int(img.shape[2]/4)))
