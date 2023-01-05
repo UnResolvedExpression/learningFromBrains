@@ -124,7 +124,7 @@ if __name__ == '__main__':
                     lossOut = torch.zeros(img.shape).cuda()
                     print('lossout.shape')
                     print(lossOut.shape)
-                    lossOut[:88,:100,:88] = output
+                    lossOut[0,:88,:100,:88] = output
                     #RuntimeError: The expanded size of the tensor (88) must match the existing size (100) at non-singleton dimension 1.  Target sizes: [88, 88, 88].  Tensor sizes: [88, 100, 88]
                     #I made there variable instead of hard coded
                     #loss = criterion(lossOut,img)
