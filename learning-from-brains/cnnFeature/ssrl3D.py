@@ -60,6 +60,7 @@ if __name__ == '__main__':
     decOptimizer = torch.optim.Adam(dec.parameters(), lr=configs.learning_rate, weight_decay=1e-5)
 
     # adapt these
+
     for epoch in range(configs.num_epochs):
         with tqdm(trainDataLoader) as tepoch:
             saveImg=0;
