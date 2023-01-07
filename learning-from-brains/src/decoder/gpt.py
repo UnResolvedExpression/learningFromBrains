@@ -30,6 +30,9 @@ class GPTModel(torch.nn.Module):
         self.dropout_attn = dropout
         self.dropout_embd = dropout
         self.mse_loss = torch.nn.MSELoss()
+
+        # %err=mse/msinput
+
         self.bxe_loss = torch.nn.BCEWithLogitsLoss() 
         self.config = GPT2Config(
             vocab_size=1,

@@ -76,6 +76,8 @@ if __name__ == '__main__':
                 data=data.float()
 
                 preimg = torch.nn.functional.normalize(data, p=2.0, dim=3)  # this is potentially a dataleak...
+                #this is okay because the train and test are not mixed
+                #the problem is
 
                 for timePoint in range(0,data.shape[3]):
                     tepoch.set_description(f"Epoch {epoch} Timepoint {timePoint}")
