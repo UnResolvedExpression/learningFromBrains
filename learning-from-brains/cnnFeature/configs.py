@@ -6,7 +6,7 @@ dataPath="C:/Users/ghait/Repos/SSFLData/train"
 dataPath3D="C:/Users/ghait/Repos/SSFLData/train"
 #dataPath=basePath+"/hcp/100307/analysis"
 basePath=pathlib.Path().absolute().as_posix()
-resultPath=basePath+"/results"
+resultPath=basePath+"/cnnFeature/results"
 
 if  'lin' in pathlib.Path().absolute().as_posix():
     dataPath="/space_lin1/hcp"
