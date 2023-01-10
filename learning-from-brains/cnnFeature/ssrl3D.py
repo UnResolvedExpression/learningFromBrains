@@ -140,7 +140,7 @@ if __name__ == '__main__':
                     epoch_loss += loss.data
                     tepoch.set_postfix(data="train", loss=loss.item(), total_loss=total_loss/trainDataset.__len__(), epoch_loss=epoch_loss/trainDataset.__len__())
                     saveImg=output
-            save_image(saveImg, configs.resultPath + '/image_train_{}_{}.png'.format(epoch,epoch_loss))
+            #save_image(saveImg, configs.resultPath + '/image_train_{}_{}.png'.format(epoch,epoch_loss))
             # Print model's state_dict
             print("Model's state_dict:")
             for param_tensor in enc.state_dict():
