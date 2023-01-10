@@ -85,7 +85,7 @@ class Connectome():
             sampleLength=range(remainder)
         for slice in sampleLength:
 
-            fmriSample=fmriData[:,:,:, sample*50+slice ]
+            fmriSample=fmriData[:,:,:, int(sample)*50+slice ]
             # print(fmriData.shape)
 
             #fmriData=[0,fmriData]
