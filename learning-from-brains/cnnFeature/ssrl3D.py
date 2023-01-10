@@ -77,7 +77,7 @@ if __name__ == '__main__':
 
                 preimg = torch.nn.functional.normalize(data, p=2.0, dim=3)  # this is potentially a dataleak...
                 #this is okay because the train and test are not mixed
-                #the problem is
+
 
                 for timePoint in range(0,data.shape[3]):
                     tepoch.set_description(f"Epoch {epoch} Timepoint {timePoint}")
@@ -161,16 +161,20 @@ if __name__ == '__main__':
             for var_name in decOptimizer.state_dict():
                 print(var_name, "\t", decOptimizer.state_dict()[var_name])
 
+            description = "3D_version_tinySample"
+
             torch.save({'epoch': epoch,
-            'model_state_dict': enc.state_dict(),
-            'optimizer_state_dict': encOptimizer.state_dict(),
-            'loss': epoch_loss}, configs.resultPath+"/enc_epoch_{}_loss_{}".format(epoch,epoch_loss))
+                        'model_state_dict': enc.state_dict(),
+                        'optimizer_state_dict': encOptimizer.state_dict(),
+                        'loss': epoch_loss},
+                       configs.resultPath + "/enc_epoch_{}_loss_{}_{}".format(epoch, epoch_loss, description))
 
             torch.save({'epoch': epoch,
                         'model_state_dict': dec.state_dict(),
                         'optimizer_state_dict': decOptimizer.state_dict(),
-                        'loss': epoch_loss}, configs.resultPath+"/dec_epoch_{}_loss_{}".format(epoch,epoch_loss))
-            #torch.save(dec.state_dict(), configs.resultPath)
+                        'loss': epoch_loss},
+                       configs.resultPath + "/dec_epoch_{}_loss_{}_{}".format(epoch, epoch_loss, description))
+            # torch.save(dec.state_dict(), configs.resultPath)
 
             # model = TheModelClass(*args, **kwargs)
             # model.load_state_dict(torch.load(PATH))
