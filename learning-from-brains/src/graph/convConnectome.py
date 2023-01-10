@@ -104,7 +104,7 @@ class Connectome():
         #img = fmriData.clone
         #summary(model,(1,20484))
         connectome = model(img)
-        connectome=torch.reshape(connectome,(-1))
+        connectome=torch.reshape(connectome,(-1,))
         print(connectome.shape())
         connectome=connectome.cpu().detach().numpy()
 
