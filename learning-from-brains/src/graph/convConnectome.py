@@ -91,7 +91,10 @@ class Connectome():
         #fmriData=(1,fmriData,20484)
 
         model = Enc().cuda()
-        model.load_state_dict(torch.load(cnnFeature.configs.resultPath + "/enc_epoch_12_loss_0.07231404632329941_3D_version_tiny_ample")['model_state_dict'])
+        try:
+            model.load_state_dict(torch.load(cnnFeature.configs.resultPath + "/enc_epoch_12_loss_0.07231404632329941_3D_version_tiny_ample")['model_state_dict'],strict=False)
+        except RuntimeError as e:
+            print('Ignoring "' + str(e) + '"')
         #model.load_state_dict(torch.load(cnnFeature.configs.resultPath + "/enc_epoch_115_loss_0.000305522873532027"))
         model.eval()
         # print('input for enc')
