@@ -87,7 +87,7 @@ class Connectome():
             print("samplelength")
         print(sampleLength)
         for slice in sampleLength:
-            print("int(sample)*50+slice" + int(sample)*50+slice)
+            print("int(sample)*50+slice" + str(int(sample)*50+slice))
             fmriSample=fmriData[:, int(sample)*50+slice ]
             # print(fmriData.shape)
 
