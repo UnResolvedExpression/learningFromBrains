@@ -80,7 +80,7 @@ class Connectome():
         # print(fmriData[0])
         sampleLength=range(50)
         remainder=len(fmriData[0,:])-50*int(sample)
-        print("len(fmriData[3]) "+ len(fmriData[0,:]))
+        print("len(fmriData[3]) "+ str(len(fmriData[0,:])))
         connectome_batch=[]
         if remainder<50:
             sampleLength=range(remainder)
