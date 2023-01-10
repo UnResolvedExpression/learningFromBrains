@@ -12,7 +12,7 @@ class Dataset(object):
         #/sub-02/ses-a1/func/sub-02_ses-a1_task-a_run-1_bold.nii.gz
 
         self.imagesRef = sorted(glob.glob(path + '/*/Preprocessed/*.nii.gz'))
-        self.imagesRef=self.imagesRef[0:5] #for a quick test
+        self.imagesRef=self.imagesRef[0:3] #for a quick test
         #print("self.imagesRef")
         #print(self.imagesRef)
         # for f_a in glob.glob(path + '/*/analysis/*-lh.stc'):
