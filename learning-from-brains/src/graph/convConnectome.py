@@ -78,39 +78,46 @@ class Connectome():
         # print(int(0))
         # print(fmriData)
         # print(fmriData[0])
-        fmriData=fmriData[:, int(sample) ]
-        # print(fmriData.shape)
+        sampleLength=range(50)
+        remainder=len(fmriData[3])-50*sample
+        connectome_batch=[]
+        if remainder<50:
+            sampleLength=range(remainder)
+        for slice in sampleLength:
 
-        #fmriData=[0,fmriData]
+            fmriSample=fmriData[:,:,:, int(sample*50+slice) ]
+            # print(fmriData.shape)
 
-        fmriData=torch.tensor(fmriData).cuda()
-        #fmriData=[0,fmriData]
-        img=fmriData.clone()
-        img=torch.nn.functional.normalize(img, p=2.0, dim=0)
-        img = Variable(img.clone().detach()).cuda()
-        #fmriData=(1,fmriData,20484)
+            #fmriData=[0,fmriData]
 
-        model = Enc().cuda()
-        try:
-            model.load_state_dict(torch.load(cnnFeature.configs.resultPath + "/enc_epoch_12_loss_0.07231404632329941_3D_version_tiny_ample")['model_state_dict'],strict=False)
-        except RuntimeError as e:
-            print('Ignoring "' + str(e) + '"')
-        #model.load_state_dict(torch.load(cnnFeature.configs.resultPath + "/enc_epoch_115_loss_0.000305522873532027"))
-        model.eval()
-        # print('input for enc')
-        # print(img.size())
-        # print(img)
-        img=torch.unsqueeze(img,dim=0)
-        #img = fmriData.clone
-        #summary(model,(1,20484))
-        connectome = model(img)
-        connectome=torch.squeeze(connectome)
-        print('connectome shape '+ str(connectome.shape))
-        # connectome=torch.reshape(connectome,(-1,))[0]
-        # print('connectome reshape '+ str(connectome.shape))
-        connectome=connectome.cpu().detach().numpy()
+            fmriSample=torch.tensor(fmriSample).cuda()
+            #fmriData=[0,fmriData]
+            img=fmriSample.clone()
+            img=torch.nn.functional.normalize(img, p=2.0, dim=0)
+            img = Variable(img.clone().detach()).cuda()
+            #fmriData=(1,fmriData,20484)
 
-        return connectome
+            model = Enc().cuda()
+            try:
+                model.load_state_dict(torch.load(cnnFeature.configs.resultPath + "/enc_epoch_12_loss_0.07231404632329941_3D_version_tiny_ample")['model_state_dict'],strict=False)
+            except RuntimeError as e:
+                print('Ignoring "' + str(e) + '"')
+            #model.load_state_dict(torch.load(cnnFeature.configs.resultPath + "/enc_epoch_115_loss_0.000305522873532027"))
+            model.eval()
+            # print('input for enc')
+            # print(img.size())
+            # print(img)
+            img=torch.unsqueeze(img,dim=0)
+            #img = fmriData.clone
+            #summary(model,(1,20484))
+            connectome = model(img)
+            connectome=torch.squeeze(connectome)
+            print('connectome shape '+ str(connectome.shape))
+            # connectome=torch.reshape(connectome,(-1,))[0]
+            # print('connectome reshape '+ str(connectome.shape))
+            connectome=connectome.cpu().detach().numpy()
+            connectome_batch[slice]=connectome
+        return connectome_batch
 
     def _init_embeds(self):
 
