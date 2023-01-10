@@ -161,7 +161,7 @@ if __name__ == '__main__':
             for var_name in decOptimizer.state_dict():
                 print(var_name, "\t", decOptimizer.state_dict()[var_name])
 
-            description = "3D_version_tinySample"
+            description = "3D_version_tiny_ample"
 
             torch.save({'epoch': epoch,
                         'model_state_dict': enc.state_dict(),
