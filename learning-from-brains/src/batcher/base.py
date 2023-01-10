@@ -350,6 +350,7 @@ class BaseBatcher:
                 # print('sizes for inputs and graphinputs')
                 # print(out['inputs'].size())
                 # print(graph_inputs.size())
+                print("inputs.shape "+ out['inputs'].shape)
                 out["inputs"] = torch.cat((out['inputs'],graph_inputs),1)
             elif key in {
                 f"{self.decoding_target}.pyd",
