@@ -79,7 +79,7 @@ class Connectome():
         # print(fmriData)
         # print(fmriData[0])
         sampleLength=range(50)
-        remainder=len(fmriData[3])-50*sample
+        remainder=len(fmriData[3])-50*int(sample)
         connectome_batch=[]
         if remainder<50:
             sampleLength=range(remainder)
