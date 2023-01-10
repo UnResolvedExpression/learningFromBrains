@@ -91,7 +91,7 @@ class Connectome():
         #fmriData=(1,fmriData,20484)
 
         model = Enc().cuda()
-        model.load_state_dict(torch.load(cnnFeature.configs.resultPath + "/enc_epoch_4_loss_0.004465451929718256")['model_state_dict'])
+        model.load_state_dict(torch.load(cnnFeature.configs.resultPath + "/enc_epoch_12_loss_0.07231404632329941_3D_version_tiny_ample")['model_state_dict'])
         #model.load_state_dict(torch.load(cnnFeature.configs.resultPath + "/enc_epoch_115_loss_0.000305522873532027"))
         model.eval()
         # print('input for enc')
@@ -101,6 +101,8 @@ class Connectome():
         #img = fmriData.clone
         #summary(model,(1,20484))
         connectome = model(img)
+        connectome=torch.reshape(connectome,(-1))
+        print(connectome.shape())
         connectome=connectome.cpu().detach().numpy()
 
         return connectome
